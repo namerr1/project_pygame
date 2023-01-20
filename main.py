@@ -48,10 +48,12 @@ class Enemy(Game):
         else:
             self.rect.y += self.speed
 
-
-    
-
-        
+zvezda1 = Player('df.jpg', 20, 150, 5, 50, 50)
+zvezda2 = Player('df.jpg', 70, 150, 5, 50, 50)
+zvezda3 = Player('df.jpg', 120, 150, 5, 50, 50)
+zvezda1 = Player('df.jpg', 20, 150, 5, 50, 50)
+zvezda2 = Player('df.jpg', 70, 150, 5, 50, 50)
+zvezda3 = Player('df.jpg', 120, 150, 5, 50, 50)
 
 window = display.set_mode((700, 500))
 display.set_caption('Игра Шутер')
@@ -139,6 +141,18 @@ while game:
             else:
                 rel_time = False
                 ogranich = 0
+        if lives == 2:
+            zvezda1.reset()
+            zvezda2.reset()
+        if lives == 3:
+            zvezda1.reset()
+            zvezda2.reset()
+            zvezda3.reset()
+        if lives == 1:
+            zvezda1.reset()
+        if lives == 0:
+            fon = transform.scale(image.load('21.jpg'), (700, 500))
+
 
             
 
@@ -169,14 +183,14 @@ while game:
             inopl = Enemy(a, x, 0, speed)
             inoplanets.add(inopl)
         if hit > 9:
-            mixer.music.set_volume(0.2)
+
 
             finish = True
             window.blit(porazenie, (200, 200))
 
         if lost > 30:
             window.blit(pobeda, (200, 200))
-            mixer.music.set_volume(0.2)
+
 
             finish = True
 
